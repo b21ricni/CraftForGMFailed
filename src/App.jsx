@@ -2,16 +2,28 @@ import { useState } from "react"
 import "./styles.css"
 
 export default function App() {
-  const [newCharacter, setNewCharacter] = useState("")
+  const [newCharacterName, setNewCharacterName] = useState("")
+  const [character, setCharacter] = useState([])
+
+  function handleSubmit(){
+    e.preventDefault()
+
+    setCharacter((currentCharacter) => {
+      return [
+        ...currentCharacter,
+        {id: crypto.randomUUID(), title: newCharacterName},
+      ]
+    })
+  }
   
   return (
     <>
-      <form action="" className="new-item-form">
+      <form onSubmit={handleSubmit} className="new-item-form">
         <div className="form-row">
           <label htmlFor="item">Character name</label>
           <input 
-            value={newCharacter} 
-            onChange={e => setNewCharacter(e.target.value)} 
+            value={character} 
+            onChange={e => setNewCharacterName(e.target.value)} 
             type="text" 
             id="item" 
           />
