@@ -5,7 +5,7 @@ export default function App() {
   const [newCharacterName, setNewCharacterName] = useState("")
   const [character, setCharacter] = useState([])
 
-  function handleSubmit(){
+  function handleSubmit(e){
     e.preventDefault()
 
     setCharacter((currentCharacter) => {
