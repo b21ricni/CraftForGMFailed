@@ -30,6 +30,12 @@ export default function App() {
     })
   }
 
+  function deleteCharacter(id){
+    setCharacter(currentCharacter => {
+      return currentCharacter.filter(character => character.id !== id)
+    })
+  }
+
   return (
     <>
       <form onSubmit={handleSubmit} className="new-item-form">
@@ -46,6 +52,7 @@ export default function App() {
       </form>
       <h1 className="header">Characters</h1>
       <ul className="list">
+        {character.length === 0 && "No characters"}
         {character.map(character => {
           return (
             <li key={character.id} >
@@ -57,7 +64,10 @@ export default function App() {
                 />
                 {character.title}
               </label>
-              <button className="btn btn-danger">X</button>
+              <button 
+                className="btn btn-danger"
+                onClick={e => deleteCharacter(character.id)}
+              >X</button>
             </li>
           )
         })}
