@@ -11,7 +11,7 @@ export default function App() {
     setCharacter((currentCharacter) => {
       return [
         ...currentCharacter,
-        {id: crypto.randomUUID(), title: newCharacterName},
+        {id: crypto.randomUUID(), title: newCharacterName, completed: false},
       ]
     })
   }
@@ -32,13 +32,17 @@ export default function App() {
       </form>
       <h1 className="header">Characters</h1>
       <ul className="list">
-        <li>
-          <label>
-            <input type="checkbox" />
-            item 1
-          </label>
-          <button className="btn btn-danger">X</button>
-        </li>
+        {character.map(character => {
+          return (
+            <li>
+              <label>
+                <input type="checkbox" />
+                item 1
+              </label>
+              <button className="btn btn-danger">X</button>
+            </li>
+          )
+        })}
       </ul>
     </>
   )
