@@ -22,7 +22,7 @@ export default function App() {
         <div className="form-row">
           <label htmlFor="item">Character name</label>
           <input 
-            value={character} 
+            value={newCharacterName} 
             onChange={e => setNewCharacterName(e.target.value)} 
             type="text" 
             id="item" 
