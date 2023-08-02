@@ -14,6 +14,8 @@ export default function App() {
         {id: crypto.randomUUID(), title: newCharacterName, completed: false},
       ]
     })
+
+    setNewCharacterName("")
   }
   
   return (
@@ -34,10 +36,10 @@ export default function App() {
       <ul className="list">
         {character.map(character => {
           return (
-            <li>
+            <li key={character.id} >
               <label>
-                <input type="checkbox" />
-                item 1
+                <input type="checkbox" checked={character.completed} />
+                {character.title}
               </label>
               <button className="btn btn-danger">X</button>
             </li>
