@@ -18,6 +18,18 @@ export default function App() {
     setNewCharacterName("")
   }
   
+  function toggleCharacter(id, completed){
+    setCharacter(currentCharacter => {
+      return currentCharacter.map(character => {
+        if (character.id === id) {
+          return { ...character, completed}
+        }
+
+        return character
+      })
+    })
+  }
+
   return (
     <>
       <form onSubmit={handleSubmit} className="new-item-form">
@@ -38,7 +50,11 @@ export default function App() {
           return (
             <li key={character.id} >
               <label>
-                <input type="checkbox" checked={character.completed} />
+                <input 
+                  type="checkbox" 
+                  checked={character.completed} 
+                  onChange={e => toggleCharacter(character.id, e.target.checked)}
+                />
                 {character.title}
               </label>
               <button className="btn btn-danger">X</button>
