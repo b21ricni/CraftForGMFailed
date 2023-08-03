@@ -1,10 +1,21 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import "./styles.css"
 import { NewCharacterForm } from "./NewCharacterForm"
 import { CharacterList } from "./CharacterList"
 
 export default function App() {
-  const [character, setCharacter] = useState([])
+  {/*Fetch local storage data*/}
+  const [character, setCharacter] = useState(() => {
+    const localValue = localStorage.getItem("ITEMS")
+    if (localValue == null) return []
+
+    return JSON.parse(localValue)
+  })
+
+  {/*Local storage, saving data*/}
+  useEffect(() =>{
+    localStorage.setItem("ITEMS", JSON.stringify(character))
+  }, [character])
 
   function addCharacter(title){
     setCharacter((currentCharacter) => {
