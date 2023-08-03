@@ -37,7 +37,11 @@ export default function App() {
     <>
       <NewCharacterForm addCharacter={addCharacter}/>
       <h1 className="header">Characters</h1>
-      <CharacterList character={character}/>
+      <CharacterList 
+        character={character} 
+        toggleCharacter={toggleCharacter} 
+        deleteCharacter={deleteCharacter}
+      />
     </>
   )
 }

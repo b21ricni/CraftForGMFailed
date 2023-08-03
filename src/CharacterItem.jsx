@@ -1,4 +1,4 @@
-export function CharaterItem(completed, id, title) {
+export function CharacterItem({ completed, id, title, toggleCharacter, deleteCharacter }) {
   return (
     <li>
       <label>
